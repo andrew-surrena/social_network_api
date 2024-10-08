@@ -1,8 +1,11 @@
-import { Schema, model } from 'mongoose';
-import { reactionSchema } from './Reaction.js';
-import type { IReaction } from './Reaction.js';
+import { Schema, model, Document, ObjectId, Types } from 'mongoose';
 
-
+interface IReaction extends Document {
+    reactionId: ObjectId;
+    reactionBody: string;
+    username: string;
+    createdAt: Date;
+    }
 interface IThought {
     thoughtext: string;
 
@@ -10,6 +13,30 @@ interface IThought {
     username: string;
     reactions: IReaction[];
 }
+
+const reactionSchema = new Schema<IReaction>(
+    {
+    reactionId: {type: Schema.Types.ObjectId,
+        default: () => new Types.ObjectId(),
+    },
+    reactionBody: { type: String,
+        required: true,
+        maxlength: 280,
+     },
+    username: { type: String, 
+        required: true,
+    },
+    createdAt: {type: Date,
+default: Date.now,
+    },
+},
+    {
+        toJSON: {
+          getters: true,
+        },
+        id: false,
+      }
+);
 
 const thoughtSchema = new Schema<IThought>(
     {
