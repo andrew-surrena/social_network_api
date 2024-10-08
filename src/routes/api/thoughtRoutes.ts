@@ -1,9 +1,11 @@
 import { Router } from 'express';
 const router = Router();
-import { getThoughts, getSingleThought, createThought, updateThought, deleteThought } from '../../controllers/userController.js';
+import { getThoughts, getSingleThought, createThought, updateThought, deleteThought, addReaction, deleteReaction } from '../../controllers/userController.js';
 
 router.route('/').get(getThoughts).post(createThought);
 
-router.route('/:userId').get(getSingleThought).put(updateThought).delete(deleteThought);
+router.route('/:thoughtId').get(getSingleThought).put(updateThought).delete(deleteThought);
+
+router.route('/:thoughtId/reactions').post(addReaction).delete(deleteReaction);
 
 export { router as thoughtRoutes };
