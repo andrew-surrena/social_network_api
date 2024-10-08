@@ -35,11 +35,17 @@ const userSchema = new Schema<IUser>(
             },
         ],
     },
-    {
+    {   toJSON: {
+        virtuals: true
+    },
         timestamps: true,
         id: false,
     }
 );
+
+userSchema.virtual('friendCount').get(function () {
+    return this.friends?.length;
+  });
 
 const User = model('User', userSchema);
 
