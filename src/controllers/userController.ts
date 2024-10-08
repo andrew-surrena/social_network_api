@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { ObjectId } from 'mongodb';
 import { User, Thought } from '../models/index.js';
 
 export const getUsers = async (_req: Request, res: Response) => {
@@ -54,7 +53,7 @@ export const getUsers = async (_req: Request, res: Response) => {
   export const updateUser = async (req: Request, res: Response) => {
     try {
       const user = await User.findOneAndUpdate(
-        { _id: req.params.courseId },
+        { _id: req.params.userId },
         { $set: req.body },
         { runValidators: true, new: true }
       );
