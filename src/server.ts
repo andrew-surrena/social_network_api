@@ -8,9 +8,7 @@ const PORT = 3001;
 const app = express();
 
 // Note: not necessary for the Express server to function. This just helps indicate what project's server is running in the terminal.
-const project = cwd.includes('social_network_api')
-  ? cwd.split('social_network_api')[0]
-  : cwd;
+const project = cwd.includes('social_network_api') ? 'social_network_api' : cwd;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
