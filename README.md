@@ -54,7 +54,7 @@ Now the server should be up and running on port 3001 and you'll be able to perfo
 
 ### Access video demo: 
 
-* 
+* https://youtu.be/rctac2HHB5I
 
 ## Credits
 Special thanks to the following instructors for their help:
